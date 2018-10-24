@@ -2,6 +2,8 @@
 
 Resin.io compatible containerised OpenCanary
 
+# [Please support Thinkst and get a real Canary (or 2 or more)!!!](https://canary.tools/)
+
 [Thinkst OpenCanary](https://github.com/thinkst/opencanary)
 
 [Diverging Deception Designs: Honeypots and tokens in modern networks](https://www.youtube.com/watch?v=BRsrK3hNAXo)
