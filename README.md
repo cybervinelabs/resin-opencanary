@@ -12,8 +12,7 @@ Additionally, I had a requirement to still maintain a similar principle to MHN i
 
 Below are some options for log handlers, there are many available so I did not want to include them all - more information can be found on the OpenCanary GitHub page - https://github.com/thinkst/opencanary
 
-.. code-block:: json
-
+```
 "handlers": {
             "console": {
                 "class": "logging.StreamHandler",
@@ -36,7 +35,7 @@ Below are some options for log handlers, there are many available so I did not w
                 "host": "127.0.0.1",
                 "port": 1514
             }
-
+```
 
 
 TBD:
