@@ -43,6 +43,7 @@ Below are some options for log handlers, there are many available so I did not w
 TBD:
 
 * Implement Samba support into the container, and configure for OpenCanary to use
+* Implement RDP support
 * Implement [OpenCanary Correlator](https://github.com/thinkst/opencanary-correlator)
 * Long term goal: fork OpenCanary to use ENV vars from resin.io interface to uniquely customize each Pi to a selection of differentiated services, currently "all Pi are equal" in terms of a single resin.io App (multiple Apps could be created depending on your requirements - but then it's separate OS images etc).
 * Long term goal: create an API that generates the OpenCanary configuration and a corresponding service on the container which fetches this configuration, dumps it to file and then restarts opencanary

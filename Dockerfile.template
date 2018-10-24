@@ -1,31 +1,35 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-python:2
 
+### Enable systemd based Init 
 ENV INITSYSTEM on
 
+### Install all requirements
 RUN apt-get update && apt-get install --yes libpcap-dev libssl-dev \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get -y autoremove
 
-# Copy requirements.txt first for better cache on later pushes
+### Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
 
-# pip install python deps from requirements.txt on the resin.io build server
+### pip install python deps from requirements.txt on the resin.io build server
 RUN mkdir -p /opt/opencanary &&  virtualenv -p python2 /opt/opencanary/virtualenv \
   && . /opt/opencanary/virtualenv/bin/activate \
   && pip install -Ur /requirements.txt
 
-# Configure the opencanary options you require within this file before deployment
+### Configure the opencanary options you require within this file before deployment
 ADD conf/opencanary.conf /root/.opencanary.conf
 
-# Configure the log forwarder before implementing the service
+### Configure the log forwarder before implementing the service
 # ADD canary-log-forwarder.py /opt/opencanary/virtualenv/canary_log_forwarder.py
 # COPY canary-log-forwarder.service /etc/systemd/system/canary-log-forwarder.service
 # RUN systemctl enable /etc/systemd/system/canary-log-forwarder.service
 
-# Create 
+### Create log file
 RUN touch /var/log/opencanary.log
 
+### create OpenCanary service
 COPY opencanary.service /etc/systemd/system/opencanary.service
 RUN systemctl enable /etc/systemd/system/opencanary.service
 
+### Display log output in console
 CMD ["tailf","/var/log/opencanary.log"]
