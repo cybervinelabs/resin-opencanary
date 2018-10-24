@@ -35,7 +35,7 @@ Below are some options for log handlers, there are many available so I did not w
                 "class": "opencanary.logger.SocketJSONHandler",
                 "host": "127.0.0.1",
                 "port": 1514
-            },
+            }
 
 
 
