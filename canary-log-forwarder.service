@@ -1,0 +1,14 @@
+[Unit]
+Description=Canary log forwarder
+After=syslog.target
+After=network.target
+
+[Service]
+Restart=always
+Environment=VIRTUAL_ENV=/opt/opencanary/virtualenv/
+Environment=PATH=$VIRTUAL_ENV/bin:$PATH
+WorkingDirectory=/opt/opencanary/virtualenv/
+ExecStart=/opt/opencanary/virtualenv/bin/python /opt/opencanary/virtualenv/canary_log_forwarder.py
+
+[Install]
+WantedBy=basic.target
