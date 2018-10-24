@@ -12,15 +12,20 @@ COPY ./requirements.txt /requirements.txt
 # pip install python deps from requirements.txt on the resin.io build server
 RUN mkdir -p /opt/opencanary &&  virtualenv -p python2 /opt/opencanary/virtualenv \
   && . /opt/opencanary/virtualenv/bin/activate \
-#  && pip install --upgrade pip \
   && pip install -Ur /requirements.txt
 
+# Configure the opencanary options you require within this file before deployment
 ADD conf/opencanary.conf /root/.opencanary.conf
+
+# Configure the log forwarder before implementing the service
+# ADD canary-log-forwarder.py /opt/opencanary/virtualenv/canary_log_forwarder.py
+# COPY canary-log-forwarder.service /etc/systemd/system/canary-log-forwarder.service
+# RUN systemctl enable /etc/systemd/system/canary-log-forwarder.service
+
+# Create 
 RUN touch /var/log/opencanary.log
 
-# COPY canary-log-forwarder.service /etc/systemd/system/canary-log-forwarder.service
 COPY opencanary.service /etc/systemd/system/opencanary.service
-# RUN systemctl enable /etc/systemd/system/canary-log-forwarder.service
 RUN systemctl enable /etc/systemd/system/opencanary.service
 
 CMD ["tailf","/var/log/opencanary.log"]
