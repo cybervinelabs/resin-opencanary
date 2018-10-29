@@ -4,7 +4,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-python:2
 ENV INITSYSTEM on
 
 ### Install all requirements
-RUN apt-get update && apt-get install --yes libpcap-dev libssl-dev \
+RUN apt-get update && apt-get install --yes libpcap-dev libssl-dev cron \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get -y autoremove
 
@@ -18,6 +18,13 @@ RUN mkdir -p /opt/opencanary &&  virtualenv -p python2 /opt/opencanary/virtualen
 
 ### Configure the opencanary options you require within this file before deployment
 ADD conf/opencanary.conf /root/.opencanary.conf
+ADD configdecrypt.sh /root/configdecrypt.sh
+RUN chmod 0755 /root/configdecrypt.sh
+
+# Configure config file sync
+COPY crontabentry /etc/cron.d/opencanary-sync
+RUN chmod 0644 /etc/cron.d/opencanary-sync
+RUN service cron start
 
 ### Configure the log forwarder before implementing the service
 # ADD canary-log-forwarder.py /opt/opencanary/virtualenv/canary_log_forwarder.py

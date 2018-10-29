@@ -1,0 +1,2 @@
+*/5 * * * * /root/configdecrypt.sh
+# Mandatory blank line
