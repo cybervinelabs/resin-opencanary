@@ -11,7 +11,7 @@ CMP2=`cat $CONFIG_PATH | md5sum | cut -d" " -f1`
 if ! [ "$CMP1" = "$CMP2" ]; then
   echo $CONFIG_DATA > $CONFIG_PATH
   if [ $RESINPOT_SCRIPT_DEBUG = "true" ]; then
-    cat $CONFIG_PATH > /var/log/configdecrypt.log
+    echo $CONFIG_DATA > /var/log/configdecrypt.log
   fi
   systemctl restart $CONFIG_SERVICE
   echo $(date +%F) "Config Decrypt Completed" > /var/log/configdecrypt.log
