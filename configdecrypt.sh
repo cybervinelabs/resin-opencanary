@@ -4,7 +4,7 @@ alias date="date +%d-%h-%Y-%H-%m-%S"
 
 echo $(date) "Starting Configuration Decryption Check" >> /var/log/configdecrypt.log
 
-if ! [ [[ -z "${RESINPOT}" ]] ]; then
+if ! [[ -z "${RESINPOT}" ]]; then
   # Grab BASE64 variables from ENV 
   echo $(date) "" >> /var/log/configdecrypt.log
   CONFIG_PATH=`echo $RESINPOT | cut -d . -f 1 | base64 -d`
