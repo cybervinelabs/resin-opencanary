@@ -1,1 +1,1 @@
-*/5 * * * * root /root/configdecrypt.sh
+@reboot root /root/configdecrypt.sh
