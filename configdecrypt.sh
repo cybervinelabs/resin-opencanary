@@ -9,6 +9,7 @@ CMP1=`echo -n $CONFIG_DATA | md5sum | cut -d" " -f1`
 CMP2=`cat $CONFIG_PATH | md5sum | cut -d" " -f1`
 
 if ! [ "$CMP1" = "$CMP2" ]; then
+  echo $(date +%d-%h-%Y-%H-%m-%S) "Configurations differ, replacing current configuration" >> /var/log/configdecrypt.log
   echo $CONFIG_DATA > $CONFIG_PATH
   if [ "$RESINPOT_SCRIPT_DEBUG" = "true" ]; then
     echo $CONFIG_DATA >> /var/log/configdecrypt.log
