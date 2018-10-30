@@ -1,7 +1,6 @@
 [Unit]
 Description=Configuration Decrypt
-After=syslog.target
-After=network.target
+After=launch.service
 ConditionPathExists=/root/configdecrypt.sh
 
 [Service]

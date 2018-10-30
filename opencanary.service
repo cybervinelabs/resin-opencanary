@@ -2,8 +2,6 @@
 Description=OpenCanary honeypot
 After=syslog.target
 After=network.target
-After=launch.service
-After=cron.service
 
 [Service]
 Restart=always
@@ -11,7 +9,6 @@ Environment=VIRTUAL_ENV=/opt/opencanary/virtualenv/
 Environment=PATH=$VIRTUAL_ENV/bin:/usr/bin:$PATH
 WorkingDirectory=/opt/opencanary/virtualenv/bin
 ExecStart=/opt/opencanary/virtualenv/bin/opencanaryd --dev
-ExecStartPost=/root/configdecrypt.sh
 
 [Install]
 WantedBy=basic.target
