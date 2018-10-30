@@ -4,7 +4,6 @@ alias date="date +%d-%h-%Y-%H-%m-%S"
 
 echo $(date) "Starting Configuration Decryption Check" >> /var/log/configdecrypt.log
 
-
 if [ -z ${RESINPOT+x} ]; then
   echo $(date) "Variable unset, leaving default configuration" >> /var/log/configdecrypt.log
 else
