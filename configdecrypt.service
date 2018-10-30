@@ -1,14 +1,12 @@
 [Unit]
 Description=Configuration Decrypt
-After=launch.service
-ConditionPathExists=/root/configdecrypt.sh
+After=network-online.target
 
 [Service]
-Type=forking
 ExecStart=/root/configdecrypt.sh
-TimeoutSec=0
 StandardOutput=tty
-RemainAfterExit=yes
+StandardError=tty
+TTYPath=/dev/console
 
 [Install]
 WantedBy=basic.target
