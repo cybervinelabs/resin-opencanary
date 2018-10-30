@@ -22,7 +22,7 @@ if ! [[ -z "${RESINPOT}" ]]; then
   systemctl restart $CONFIG_SERVICE
   echo $(date) "Boot Config Decrypt Completed" >> /var/log/configdecrypt.log
 else
-  echo $(date) "$(RESINPOT) variable unset, leaving default configuration" >> /var/log/configdecrypt.log
+  echo $(date) "Variable unset, leaving default configuration" >> /var/log/configdecrypt.log
 fi
 
 echo $(date) "Ending Configuration Decryption Check" >> /var/log/configdecrypt.log
