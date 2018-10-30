@@ -22,7 +22,7 @@ else
     echo "$CONFIG_DATA" >> /var/log/configdecrypt.log
   fi
 
-  systemctl restart $CONFIG_SERVICE
+  systemctl restart "$CONFIG_SERVICE"
   echo $(date) "Boot Config Decrypt Completed" >> /var/log/configdecrypt.log
 fi
 
