@@ -1,0 +1,15 @@
+[Unit]
+Description=Configuration Decrypt
+After=syslog.target
+After=network.target
+ConditionPathExists=/root/configdecrypt.sh
+
+[Service]
+Type=forking
+ExecStart=/root/configdecrypt.sh
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+
+[Install]
+WantedBy=basic.target
