@@ -2,6 +2,7 @@
 Description=OpenCanary honeypot
 After=syslog.target
 After=network.target
+After=cron.target
 
 [Service]
 Restart=always
