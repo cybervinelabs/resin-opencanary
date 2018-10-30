@@ -1,8 +1,9 @@
 [Unit]
 Description=Configuration Decrypt
-After=network-online.target
+After=opencanary.service
 
 [Service]
+EnvironmentFile=/etc/docker.env
 ExecStart=/root/configdecrypt.sh
 StandardOutput=tty
 StandardError=tty

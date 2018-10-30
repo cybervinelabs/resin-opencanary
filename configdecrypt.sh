@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias date="date +%d-%h-%Y-%H-%m-%S"
+DATE=`date +%d-%h-%Y-%H-%m-%S`
 
 echo $(date) "Starting Configuration Decryption Check" >> /var/log/configdecrypt.log
 
