@@ -20,8 +20,8 @@ RUN mkdir -p /opt/opencanary &&  virtualenv -p python2 /opt/opencanary/virtualen
 ADD conf/opencanary.conf /root/.opencanary.conf
 ADD configdecrypt.sh /root/configdecrypt.sh
 RUN chmod 0755 /root/configdecrypt.sh
-COPY configdecrypt.service /etc/systemd/system/configdecrypt.service
-RUN systemctl enable /etc/systemd/system/configdecrypt.service
+#COPY configdecrypt.service /etc/systemd/system/configdecrypt.service
+#RUN systemctl enable /etc/systemd/system/configdecrypt.service
 
 # Configure config file sync
 #COPY crontabentry /etc/cron.d/opencanary-sync
