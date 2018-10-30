@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Restart=always
 StandardOutput=tty
-StandardError=tty
+#StandardError=tty
 TTYPath=/dev/console
 Environment=VIRTUAL_ENV=/opt/opencanary/virtualenv/
 Environment=PATH=$VIRTUAL_ENV/bin:/usr/bin:$PATH
