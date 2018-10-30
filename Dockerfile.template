@@ -20,11 +20,15 @@ RUN mkdir -p /opt/opencanary &&  virtualenv -p python2 /opt/opencanary/virtualen
 ADD conf/opencanary.conf /root/.opencanary.conf
 ADD configdecrypt.sh /root/configdecrypt.sh
 RUN chmod 0755 /root/configdecrypt.sh
+ADD rc.local /etc/rc.local
+RUN chmod 0755 /etc/rc.local
+COPY rc-local.service /etc/systemd/system/rc-local.service
+RUN systemctl enable /etc/systemd/system/rc-local.service
 
 # Configure config file sync
-COPY crontabentry /etc/cron.d/opencanary-sync
-RUN chmod 0644 /etc/cron.d/opencanary-sync
-RUN service cron start
+#COPY crontabentry /etc/cron.d/opencanary-sync
+#RUN chmod 0644 /etc/cron.d/opencanary-sync
+#RUN service cron start
 
 ### Configure the log forwarder before implementing the service
 # ADD canary-log-forwarder.py /opt/opencanary/virtualenv/canary_log_forwarder.py
